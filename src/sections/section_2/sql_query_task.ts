@@ -1,9 +1,9 @@
 const peoplePhoneCombinationQuery = /*sql*/ `
-  SELECT CONCAT(p.first_name, ' ', p.last_name) AS name, 
-         GROUP_CONCAT(DISTINCT ph.number ORDER BY ph.id SEPARATOR ',') AS numbers
-  FROM people p
-  LEFT JOIN phones ph ON p.id = ph.user_id
-  GROUP BY p.id;
+SELECT CONCAT(first_name, ' ', last_name) AS name,
+       GROUP_CONCAT(number SEPARATOR ',') AS numbers
+FROM people
+LEFT JOIN phones ON people.id = phones.user_id
+GROUP BY name;
 `;
 
 export { peoplePhoneCombinationQuery };
