@@ -3,12 +3,15 @@ import {
   ProductList,
   Product,
   productsTableName,
-} from './models/products.interfaces';
-import { categoriesTableName, Category } from './models/categories.interfaces';
-import { Variation, variationsTableName } from './models/variations.interfaces';
-import { createTables } from './schemas/product';
-import { generateUUID } from './services/uuid.service';
-import { replaceSpacesWithUnderscores } from '../../../utils/utils';
+} from '../models/products.interfaces';
+import { categoriesTableName, Category } from '../models/categories.interfaces';
+import {
+  Variation,
+  variationsTableName,
+} from '../models/variations.interfaces';
+import { createTables } from '../schemas/product';
+import { generateUUID } from './uuid.service';
+import { replaceSpacesWithUnderscores } from '../../../../utils/utils';
 
 // Define the configuration for the database connection
 const dbConfig: Knex.Config = {

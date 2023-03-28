@@ -1,19 +1,18 @@
 import util from 'util';
 import dotenv from 'dotenv';
-import { mockUpdatedList } from './sections/section_3/data_fetching_and_saving/mock_data/updated_list.mock';
-dotenv.config();
-
-import { fetchProductList } from './sections/section_3/data_fetching_and_saving/api_requests';
+import { mockUpdatedList } from './sections/section_3/dataFetchingAndSaving/mock_data/updatedList.mock';
+import { fetchProductList } from './sections/section_3/dataFetchingAndSaving/services/api.service';
 import {
-  db,
   initDB,
-  killConnection,
+  db,
   cleanTables,
-} from './sections/section_3/data_fetching_and_saving/db';
+  killConnection,
+} from './sections/section_3/dataFetchingAndSaving/services/db.service';
 import {
   getProductList,
   updateOrInsertProductList,
-} from './sections/section_3/data_fetching_and_saving/services/product.db.service';
+} from './sections/section_3/dataFetchingAndSaving/services/product.db.service';
+dotenv.config();
 
 //modify console.log to deep log objects
 console.table = (object) => {
