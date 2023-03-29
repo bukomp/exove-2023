@@ -53,12 +53,9 @@ describe('API and SQL tests', () => {
 
     const response = await fetchProductList();
     await updateOrInsertProductList(db, response.products);
-    await sleep(3000);
+    await sleep(3000); // delay added dor greater difference in updated timestamps in database
     await updateOrInsertProductList(db, mockUpdatedList.products);
     const savedProducts = await getProductList(db);
-    console.log(
-      util.inspect(savedProducts, false, null, true /* enable colors */)
-    );
 
     const partialExpected = expect.objectContaining(updatedResult2 as any);
     expect(savedProducts).toEqual(partialExpected);
@@ -71,7 +68,7 @@ const connectToDB = (): void => {
   db = knex({
     client: 'mysql2',
     connection: {
-      host: process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST || '127.0.0.1',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || 'password',
       database: process.env.DB_DB || 'test_database',
