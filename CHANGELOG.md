@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/bukomp/exove-2023/compare/v1.1.0...v1.1.1) (2023-03-29)
+
+
+### Bug Fixes
+
+* added default url to API request function ([ac0191f](https://github.com/bukomp/exove-2023/commit/ac0191f53bb8fce1fd5a9da254cc98cf1de7ff2d))
+* fixed spelling errors ([bb693f8](https://github.com/bukomp/exove-2023/commit/bb693f8c81754c7f1794226bbd88dfec1e1d3fd2))
+* minor fixes to code ([a326a6d](https://github.com/bukomp/exove-2023/commit/a326a6dcebf1063d93ef77a786df42401dfb10e6))
+
 ## 1.1.0 (2023-03-29)
 
 
