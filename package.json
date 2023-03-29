@@ -1,14 +1,11 @@
 {
-  "name": "nodejs-template",
+  "name": "exove-2023",
   "version": "1.0.0",
-  "description": "Template for Node.js projects",
+  "description": "Exove 2023 developer test",
   "main": "main.ts",
   "scripts": {
-    "start": "ts-node ./src/main.ts",
     "postinstall": "bash ./scripts/postinstall.sh",
     "test": "jest",
-    "build": "npx webpack && npm run package-build",
-    "build-dev": "npx webpack -c ./webpack.config.development.js",
     "release": "standard-version"
   },
   "author": "Edvard Shalaev (bukomp)",
