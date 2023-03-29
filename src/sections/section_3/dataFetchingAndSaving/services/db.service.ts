@@ -1,17 +1,5 @@
 import knex, { Knex } from 'knex';
-import {
-  ProductList,
-  Product,
-  productsTableName,
-} from '../models/products.interfaces';
-import { categoriesTableName, Category } from '../models/categories.interfaces';
-import {
-  Variation,
-  variationsTableName,
-} from '../models/variations.interfaces';
 import { createTables } from '../schemas/product';
-import { generateUUID } from './uuid.service';
-import { replaceSpacesWithUnderscores } from '../../../../utils/utils';
 
 // Define the configuration for the database connection
 const dbConfig: Knex.Config = {
@@ -19,8 +7,9 @@ const dbConfig: Knex.Config = {
   connection: {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
+    password: process.env.DB_PASSWORD || 'password',
     database: process.env.DB_DB || 'test_database',
+    port: +(process.env.DB_PORT || 3306),
   },
 };
 
