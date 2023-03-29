@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/bukomp/exove-2023/compare/v1.1.3...v1.1.4) (2023-03-29)
+
+
+### Bug Fixes
+
+* removed unused sqlite dependency from list of dependencies ([cc5785f](https://github.com/bukomp/exove-2023/commit/cc5785fde378c1d0ed29285a07b278b46ce9b4dc))
+
 ### [1.1.3](https://github.com/bukomp/exove-2023/compare/v1.1.2...v1.1.3) (2023-03-29)
 
 ### [1.1.2](https://github.com/bukomp/exove-2023/compare/v1.1.1...v1.1.2) (2023-03-29)

@@ -1,6 +1,6 @@
 {
   "name": "exove-2023",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Exove 2023 developer test",
   "main": "main.ts",
   "scripts": {
