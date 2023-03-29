@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/bukomp/exove-2023/compare/v1.1.1...v1.1.2) (2023-03-29)
+
+
+### Bug Fixes
+
+* another fix to the README ([e417931](https://github.com/bukomp/exove-2023/commit/e417931091fb18c204a3312146419e3292848d31))
+* fixed prices table diagram ([36ba9d6](https://github.com/bukomp/exove-2023/commit/36ba9d6ee641105d52402f5eeae5760d9b411822))
+
 ### [1.1.1](https://github.com/bukomp/exove-2023/compare/v1.1.0...v1.1.1) (2023-03-29)
 
 
