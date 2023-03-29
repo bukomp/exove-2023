@@ -50,7 +50,7 @@ const mockUpdatedList = {
       ],
       variations: [
         {
-          'paper size': 'A12',
+          'paper size': 'A1',
           price: 19.9,
         },
         {

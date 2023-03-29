@@ -110,14 +110,14 @@ const updatedResult2 = [
       {
         id: expect.anything(),
         currency: 'EURO',
-        'paper size': 'A2',
-        price: 16.9,
+        'paper size': 'A1',
+        price: 19.9,
       },
       {
         id: expect.anything(),
         currency: 'EURO',
-        'paper size': 'A12',
-        price: 19.9,
+        'paper size': 'A2',
+        price: 16.9,
       },
     ],
   },

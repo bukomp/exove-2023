@@ -3,7 +3,6 @@ dotenv.config();
 
 import { describe, expect, test, beforeAll } from '@jest/globals';
 import knex, { Knex } from 'knex';
-import { peoplePhoneCombinationQuery } from '../sections/section_2/sql_query_task';
 import {
   fetchProductList,
   getProductList,
@@ -18,6 +17,7 @@ import {
   updatedResult2,
 } from './desiredResults/APIandSQL.testResults';
 import { mockProductList, mockUpdatedList } from './mock_data';
+import util from 'util';
 
 let db: Knex;
 
@@ -53,9 +53,13 @@ describe('API and SQL tests', () => {
 
     const response = await fetchProductList();
     await updateOrInsertProductList(db, response.products);
+    await sleep(3000);
     await updateOrInsertProductList(db, mockUpdatedList.products);
-
     const savedProducts = await getProductList(db);
+    console.log(
+      util.inspect(savedProducts, false, null, true /* enable colors */)
+    );
+
     const partialExpected = expect.objectContaining(updatedResult2 as any);
     expect(savedProducts).toEqual(partialExpected);
 
@@ -87,3 +91,7 @@ const initDbForTest = async (knex: Knex): Promise<void> => {
 
   await createTables(knex);
 };
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

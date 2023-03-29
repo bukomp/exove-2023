@@ -10,6 +10,8 @@ const createTables = async (knex: Knex): Promise<void> => {
       table.uuid('id').primary().notNullable();
       table.string('name').notNullable();
       table.text('description').notNullable();
+      table.datetime('created').notNullable();
+      table.datetime('updated').notNullable();
     });
   }
 
@@ -23,6 +25,8 @@ const createTables = async (knex: Knex): Promise<void> => {
         .notNullable()
         .references('id')
         .inTable(productsTableName);
+      table.datetime('created').notNullable();
+      table.datetime('updated').notNullable();
     });
   }
 
@@ -37,6 +41,8 @@ const createTables = async (knex: Knex): Promise<void> => {
         .inTable(productsTableName);
       table.string('currency').notNullable().defaultTo('EURO');
       table.string('body').notNullable();
+      table.datetime('created').notNullable();
+      table.datetime('updated').notNullable();
     });
   }
 };

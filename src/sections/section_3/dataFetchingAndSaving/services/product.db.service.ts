@@ -86,21 +86,10 @@ const insertVariationForProduct = async (
       id: variationId,
       product_id: product.id,
       body: variationJSON,
+      created: getCurrentTimeInSQLFormat(),
+      updated: getCurrentTimeInSQLFormat(),
     });
   }
-};
-
-const deleteUnusedVariationsForProduct = async (
-  knex: Knex,
-  product: Product
-): Promise<void> => {
-  await knex(variationsTableName)
-    .whereNotIn(
-      'body',
-      product.variations.map((v) => JSON.stringify(v))
-    )
-    .andWhere({ product_id: product.id })
-    .del();
 };
 
 const insertOrUpdateCategoryForProduct = async (
@@ -118,7 +107,7 @@ const insertOrUpdateCategoryForProduct = async (
     .where({ id: categoryId })
     .andWhere({ product_id: product.id })
     .andWhereNot({ name })
-    .update({ name });
+    .update({ name, updated: getCurrentTimeInSQLFormat() });
 
   const productsCategoriesDuplicates = (
     await knex(categoriesTableName)
@@ -134,7 +123,44 @@ const insertOrUpdateCategoryForProduct = async (
     await knex(categoriesTableName).insert({
       ...category,
       product_id: product.id,
+      created: getCurrentTimeInSQLFormat(),
+      updated: getCurrentTimeInSQLFormat(),
     });
+  }
+};
+
+const insertOrUpdateProduct = async (
+  knex: Knex,
+  product: Product
+): Promise<void> => {
+  const { categories, variations, ...productData } = product;
+
+  if (!productData.id) {
+    productData.id = generateUUID();
+    await knex(productsTableName).insert({
+      ...productData,
+      created: getCurrentTimeInSQLFormat(),
+      updated: getCurrentTimeInSQLFormat(),
+    });
+  } else {
+    const productExistsInDB = (
+      await knex(productsTableName).select('id').where({ id: productData.id })
+    ).length;
+
+    const updatedProducts = await knex(productsTableName)
+      .where({ id: productData.id })
+      .whereNot({
+        name: productData.name,
+        description: productData.description,
+      })
+      .update({ ...productData, updated: getCurrentTimeInSQLFormat() });
+    if (!updatedProducts && !productExistsInDB) {
+      await knex(productsTableName).insert({
+        ...productData,
+        created: getCurrentTimeInSQLFormat(),
+        updated: getCurrentTimeInSQLFormat(),
+      });
+    }
   }
 };
 
@@ -151,23 +177,21 @@ const deleteUnusedCategoriesForProduct = async (
     .del();
 };
 
-const insertOrUpdateProduct = async (
+const deleteUnusedVariationsForProduct = async (
   knex: Knex,
   product: Product
 ): Promise<void> => {
-  const { categories, variations, ...productData } = product;
+  await knex(variationsTableName)
+    .whereNotIn(
+      'body',
+      product.variations.map((v) => JSON.stringify(v))
+    )
+    .andWhere({ product_id: product.id })
+    .del();
+};
 
-  if (!productData.id) {
-    productData.id = generateUUID();
-    await knex(productsTableName).insert(productData);
-  } else {
-    const updatedProducts = await knex(productsTableName)
-      .where({ id: productData.id })
-      .update(productData);
-    if (!updatedProducts) {
-      await knex(productsTableName).insert(productData);
-    }
-  }
+const getCurrentTimeInSQLFormat = (): string => {
+  return new Date().toISOString().slice(0, 19).replace('T', ' ');
 };
 
 export { updateOrInsertProductList, getProductList };
