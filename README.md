@@ -15,7 +15,7 @@ In this project, I have implemented a sorting algorithm that sorts strings based
 
 1. **asciiSort**: A function that utilizes JavaScript's built-in sort function to achieve the desired sorting order.
 
-2. **asciiSortFromScratch**: A custom sorting function that was written from scratch, using only basic logic and no built-in sorting functions.
+2. **asciiSortFromScratch**: A custom sorting function that was written from scratch, using only basic logic and no built-in sorting functions. This algorithm was developed in a way so it would make an array shorter with each pass, which makes it optimal and faster with each pass.
 
 The reason behind providing two solutions is that the task requirements were not entirely clear, and I wanted to ensure that both possibilities were covered. In case the task required a custom sorting algorithm without using any built-in methods, I have provided the `asciiSortFromScratch` function as a solution.
 
