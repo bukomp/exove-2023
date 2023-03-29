@@ -43,7 +43,7 @@ By using the `GROUP BY` clause, we ensure that each person appears only once in 
 
 Please refer to the provided code for a complete understanding of the query and its structure.
 ### 3A Get data and save it locally
-In this task, I have implemented a solution that fetches product data from a remote API and saves it into a local MySQL database. The code is organized into different files for better readability and to facilitate potential changes to the logic.
+In this task, I have implemented a solution that fetches product data from a remote API and saves it into a local MySQL database. As MySQL was utilized in the task from section 2, I employed it for this task as well. This enables me to utilize a single docker image to test both tasks. The code is organized into different files for better readability and to facilitate potential changes to the logic.
 
 The data contains hierarchical information and schemaless data. To handle this, I have created separate tables in the database for **products**, **categories**, and **variations**. The schemaless data for variations is saved in the form of JSON. In cases where objects do not have IDs, I generate UUIDs before saving the data.
 
