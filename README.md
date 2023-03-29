@@ -65,7 +65,7 @@ The provided code offers a complete understanding of the solution and its struct
 1. Ensure that **Node.js (version 16.x.x or higher)** is installed on your computer.
 2. Verify that you have access to a running **MySQL database** or that **Docker** is installed.
 3. Generate a **.env** file in the project's root directory (the structure of the env file is detailed further in this document).
-4. Execute **`npm i`** in the project root directory and adhere to the given prompts.
+4. Execute **`npm i`** in the project root directory and follow given prompts.
 5. To test the tasks, enter **`npm run test`**.
 
 ## Postinstall Script README
