@@ -10,8 +10,9 @@ const db = knex({
   connection: {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
+    password: process.env.DB_PASSWORD || 'password',
     database: process.env.DB_DB || 'test_database',
+    port: +(process.env.DB_PORT || 3306),
   },
 });
 
@@ -20,7 +21,6 @@ describe('SQL query test', () => {
     await initDbForTest(db);
 
     const result = await db.raw(peoplePhoneCombinationQuery);
-    console.log(result[0]);
     expect(result[0]).toEqual([
       { name: 'Anna Kråkström', numbers: '+46 771 793 336' },
       { name: 'Gerhard Feuerhaufen', numbers: null },
