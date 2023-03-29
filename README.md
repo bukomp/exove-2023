@@ -69,7 +69,7 @@ The provided code offers a complete understanding of the solution and its struct
 5. To test the tasks, enter **`npm run test`**.
 
 ## Postinstall Script README
-This postinstall script is designed to simplify the setup process for our application by automating the installation and configuration of a MySQL database within a Docker container. The script serves the following purposes:
+This postinstall script is designed to simplify the setup process for my application by automating the installation and configuration of a MySQL database within a Docker container. The script serves the following purposes:
 
 1. **Check for Docker installation**: The script first checks if Docker is installed on your system. If not, it displays a message indicating that Docker is not installed.
 
