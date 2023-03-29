@@ -47,13 +47,21 @@ const getProductList = async (knex: Knex): Promise<Product[]> => {
     FROM products;
   `);
 
-  return unpackAllVariationsObjects(products[0]);
+  return unpackAllVariationsAndCategoriesObjects(products[0]);
 };
 
-const unpackAllVariationsObjects = async (
+const unpackAllVariationsAndCategoriesObjects = async (
   products: Product[]
 ): Promise<Product[]> => {
   products.forEach((p) => {
+    // Noticed that some databases return this as a string, so it needs to be parsed
+    if (typeof p.variations === 'string') {
+      p.variations = JSON.parse(p.variations as any as string);
+    }
+    if (typeof p.categories === 'string') {
+      p.categories = JSON.parse(p.categories as any as string);
+    }
+
     p.variations = p.variations?.map((v) => {
       const { id, body, ...restOfVariation } = v;
 
